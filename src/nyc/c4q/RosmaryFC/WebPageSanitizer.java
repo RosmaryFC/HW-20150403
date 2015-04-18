@@ -3,6 +3,10 @@ package nyc.c4q.RosmaryFC;
  * Created by c4q-rosmary on 4/3/15.
  */
 
+import java.net.URL;
+
+import sun.tools.java.Scanner;
+
 /**
  * 2. Sanitizing web pages
 
@@ -17,4 +21,38 @@ package nyc.c4q.RosmaryFC;
  they encapsulate and returns a sanitized version of the HTML string.
  */
 public class WebPageSanitizer {
+    public static void main (String[] args){
+        URL url = HTTP.stringToURL("https://www.google.com");
+        String document = HTTP.get(url);
+        System.out.println("Unscraped Document: ");
+        System.out.println();
+        System.out.println(document);
+        System.out.println();
+        System.out.println();
+        System.out.println("Web-scraped Document: ");
+        System.out.println();
+        System.out.println(sanitize(document));
+    }
+
+    //removes all script tags and the information that they encapsulate. Returns a sanitized version of the HTML string.
+    public static String sanitize(String document) {
+
+        String scrapedDocument = "";
+        boolean isbetweenScriptTags = false;
+
+        for(int i = 0; i < document.length(); i++) {
+            if(i <= (document.length()-7) && document.substring(i,(i+7)).equals("<script")) {
+                isbetweenScriptTags = true;
+            }
+            else if( i >= 9 && document.substring(i-9,i).equals("</script>")) {
+                isbetweenScriptTags = false;
+            }
+
+            if(isbetweenScriptTags == false) {
+                scrapedDocument += document.charAt(i);
+            }
+        }
+
+    return scrapedDocument;
+    }
 }

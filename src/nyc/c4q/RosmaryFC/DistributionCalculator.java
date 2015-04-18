@@ -2,6 +2,10 @@ package nyc.c4q.RosmaryFC;
 /**
  * Created by c4q-rosmary on 4/3/15.
  */
+
+import java.io.File;
+import java.util.ArrayList;
+
 /**
  * 3. Character Distributions
 
@@ -20,6 +24,14 @@ package nyc.c4q.RosmaryFC;
  ...
  z = 0.05 %
  */
-public class DistributionCalculator
-{
+public class DistributionCalculator {
+    public static void main (String[] args) {
+
+    }
+    public static ArrayList calculate (File textFile) {
+
+        return null;
+    }
 }
+
+//ask for help
